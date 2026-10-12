@@ -1,0 +1,16 @@
+# Ambienti virtuali
+venv/
+env/
+ENV/
+
+# File temporanei di Python
+__pycache__/
+*.pyc
+
+# Dati e configurazioni locali che non vuoi caricare
+*.csv
+.env
+
+# Impostazioni di VS Code o sistemi operativi
+.vscode/
+.DS_Store
