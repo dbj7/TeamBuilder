@@ -8,7 +8,6 @@ __pycache__/
 *.pyc
 
 # Dati e configurazioni locali che non vuoi caricare
-*.csv
 .env
 
 # Impostazioni di VS Code o sistemi operativi
