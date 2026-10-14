@@ -113,7 +113,25 @@ def migliore(nomi, M):
 
 # ---------------- GUI ----------------
 st.title("Divisione squadre ottimale")
-st.write("Carica la tabella dei punteggi (CSV) per trovare la divisione in due squadre migliore.")
+
+st.markdown(
+    "*Carica la tabella dei punteggi* (`.csv`) *strutturata nel modo"
+    " seguente:*"
+)
+
+st.code(
+    "soggeti, persona1, persona2, ..., totale\n"
+    "persona1, x, valore1, ..., parziale1\n"
+    "persona2, valore2, x, ..., parziale2",
+    language="text",
+) 
+
+
+st.markdown(
+    '<p style="color: #555555; font-style: italic; font-size: 0.9em; margin-top:'
+    ' -10px;">Requisito minimo: inserire almeno 2 persone.</p>',
+    unsafe_allow_html=True,
+)  
 
 uploaded_file = st.file_uploader("Scegli un file CSV", type="csv")
 
