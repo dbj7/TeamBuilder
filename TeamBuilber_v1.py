@@ -142,7 +142,7 @@ if uploaded_file is not None:
         mostra_messaggi(errori, st.error, "Il file non è nel formato atteso:")
         mostra_messaggi(avvisi, st.warning, "Altre segnalazioni:")
         st.info("Formato atteso: prima riga con i nomi + una colonna finale di totale; "
-                "poi una riga per persona con etichetta, i valori, 'x' sulla diagonale e (facoltativo) il totale.")
+                "poi una riga per persona con etichetta, i valori, 'x' sulla diagonale e il totale.")
         st.stop()
 
     st.success("File caricato con successo!")
@@ -153,7 +153,7 @@ if uploaded_file is not None:
 
     n = len(nomi)
     col1, col2 = st.columns(2)
-    col1.metric("Persone", n)
+    col1.metric("Partecipanti", n)
     col2.metric("Combinazioni da provare", f"{math.comb(n, n // 2) // (2 if n % 2 == 0 else 1):,}")
 
     if n > 22:
