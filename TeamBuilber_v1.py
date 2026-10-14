@@ -120,9 +120,9 @@ st.markdown(
 )
 
 st.code(
-    "soggeti, persona1, persona2, ..., totale\n"
-    "persona1, x, valore1, ..., parziale1\n"
-    "persona2, valore2, x, ..., parziale2",
+    "categoria, persona1, persona2, ..., totale\n"
+    "persona1, x, valore, ..., parziale1\n"
+    "persona2, valore, x, ..., parziale2",
     language="text",
 ) 
 
