@@ -111,6 +111,7 @@ def migliore(nomi, M):
     return miglior_combinazione
 
 
+
 # ---------------- GUI ----------------
 st.title("Divisione squadre ottimale")
 
