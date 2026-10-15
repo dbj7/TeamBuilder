@@ -8,8 +8,6 @@ import streamlit as st
 
 # ---------------- Funzioni ----------------
 def carica(file_caricato):
-    """Legge e valida la tabella. Ritorna (nomi, matrice, errori, avvisi).
-    Se ci sono errori, nomi e matrice valgono None."""
     errori, avvisi = [], []
 
     try:
@@ -63,6 +61,8 @@ def carica(file_caricato):
                     avvisi.append(f"{cella}: la diagonale dovrebbe essere 'x', trovato '{v}' (ignorato).")
             elif v == "":
                 avvisi.append(f"{cella}: cella vuota, assumo 0.")
+            elif int(v) < 0:
+                errori.append(f"{cella}: valore negativo")
             else:
                 try:
                     M[i][j] = int(v)
