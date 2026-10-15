@@ -8,8 +8,6 @@ import streamlit as st
 
 # ---------------- Funzioni ----------------
 def carica(file_caricato):
-    """Legge e valida la tabella. Ritorna (nomi, matrice, errori, avvisi).
-    Se ci sono errori, nomi e matrice valgono None."""
     errori, avvisi = [], []
 
     try:
@@ -28,7 +26,7 @@ def carica(file_caricato):
     righe = [r for r in righe if any(c.strip() for c in r)]  # ignoro righe completamente vuote
 
     # Formato tabella
-    nomi = [c.strip() for c in righe[0][1:-1]]  # l'ultima colonna è il totale
+    nomi = [c.strip() for c in righe[0][1:-1]] 
     n = len(nomi)
     if n < 2:
         return None, None, ["Servono almeno 2 persone."], []
@@ -69,7 +67,7 @@ def carica(file_caricato):
                 except ValueError:
                     errori.append(f"{cella}: '{v}' non è un numero intero.")
 
-        # controllo totale di riga
+        # Controllo totale di riga
         if len(errori) == errori_prima and len(r) > n + 1 and r[n + 1].strip():
             try:
                 if int(r[n + 1]) != sum(M[i]):
@@ -95,13 +93,13 @@ def mostra_messaggi(messaggi, funzione, titolo, max_visibili=6):
 def somma_punteggi(squadra, punteggi):
     return sum(punteggi[i][j] for i in squadra for j in squadra if i != j)
 
-
+# Calcolo combinazione migliore
 def migliore(nomi, M):
     totale_persone = len(nomi)
     dim_team = totale_persone // 2
     miglior_combinazione = (-1, None, None)
     for squadra_a in itertools.combinations(range(totale_persone), dim_team):
-        if totale_persone % 2 == 0 and 0 not in squadra_a:  # evito squadre duplicate
+        if totale_persone % 2 == 0 and 0 not in squadra_a:  # Evito squadre duplicate
             continue
         squadra_b = [i for i in range(totale_persone) if i not in squadra_a]
         punteggio = (somma_punteggi(squadra_a, M) / len(squadra_a)
@@ -120,7 +118,7 @@ st.markdown(
 )
 
 st.code(
-    "categoria, persona1, persona2, ..., totale\n"
+    "Categoria, persona1, persona2, ..., Totale\n"
     "persona1, x, valore, ..., parziale1\n"
     "persona2, valore, x, ..., parziale2",
     language="text",
@@ -129,7 +127,7 @@ st.code(
 
 st.markdown(
     '<p style="color: #555555; font-style: italic; font-size: 0.9em; margin-top:'
-    ' -10px;">Requisito minimo: inserire almeno 2 persone.</p>',
+    ' -10px;">Il minimo numero di persone è 2, se sono presenti poù di 20 persone il calcolo richiederà più tempo.</p>',
     unsafe_allow_html=True,
 )  
 
